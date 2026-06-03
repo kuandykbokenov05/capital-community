@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital Community — XAUUSD Сигналдары</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #FFFFFF;
+  --bg2:      #F5F5F5;
+  --bg3:      #EFEFEF;
+  --card:     #F9F9F9;
+  --border:   rgba(0,0,0,0.1);
+  --white:    #111111;
+  --muted:    #333333;
+  --muted2:   #222222;
+  --green:    #22C55E;
+  --green-bg: rgba(34,197,94,0.08);
+  --green-br: rgba(34,197,94,0.2);
+  --red:      #EF4444;
+  --red-bg:   rgba(239,68,68,0.08);
+  --red-br:   rgba(239,68,68,0.2);
+  --gold:     #D4A017;
+  --gold2:    #F0BC2E;
+  --neutral:  #E0E0E0;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #FFFFFF;
+  color: #111111;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── UTILITY ─── */
+.container { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 2px;
+}
+.tag-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-br); }
+.tag-red   { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-br);   }
+.tag-gold  { background: rgba(212,160,23,0.1); color: var(--gold2); border: 1px solid rgba(212,160,23,0.25); }
+
+.section-eyebrow {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::before { content:''; width:24px; height:1px; background:#999999; }
+
+h2.section-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 15px; color: var(--muted2); line-height: 1.7;
+  max-width: 540px;
+}
+
+section { padding: 90px 0; }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 15px; font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+.nav-logo span { color: var(--gold2); }
+.nav-cta {
+  background: var(--green);
+  color: #000;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 700;
+  padding: 10px 22px; border-radius: 4px;
+  text-decoration: none; letter-spacing: 0.5px;
+  transition: opacity .2s;
+}
+.nav-cta:hover { opacity: .85; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(34,197,94,0.04) 0%, transparent 65%);
+  top: 10%; left: -100px;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(212,160,23,0.03) 0%, transparent 65%);
+  bottom: 10%; right: -50px;
+  pointer-events: none;
+}
+
+.hero-live {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--green);
+  font-family: 'Unbounded', sans-serif;
+  letter-spacing: 2px; font-weight: 700;
+  margin-bottom: 32px;
+}
+.hero-live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(34,197,94,0.4);
+  animation: live-ping 2s ease infinite;
+}
+@keyframes live-ping {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+.hero-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(36px, 7vw, 88px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+}
+.hero-title .accent { color: var(--green); }
+.hero-title .gold   { color: var(--gold2); }
+
+.hero-sub {
+  font-size: 17px; color: var(--muted2);
+  line-height: 1.8; max-width: 560px;
+  margin-bottom: 48px;
+}
+.hero-sub strong { color: var(--white); font-weight: 600; }
+
+/* HERO STATS */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 680px;
+  margin-bottom: 44px;
+}
+.hstat {
+  background: #F0F0F0;
+  padding: 20px 22px;
+  text-align: center;
+}
+.hstat-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 32px; font-weight: 900;
+  line-height: 1; letter-spacing: -1px;
+  color: var(--green);
+}
+.hstat-num.gold { color: var(--gold2); }
+.hstat-label {
+  font-size: 11px; color: #444444; margin-top: 5px;
+  letter-spacing: 0.5px;
+}
+
+.hero-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green);
+  color: #000;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px; font-weight: 700;
+  padding: 16px 36px; border-radius: 6px;
+  text-decoration: none; letter-spacing: 0.5px;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 0 0 0 rgba(34,197,94,0.3);
+}
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(34,197,94,0.25);
+}
+.hero-btn svg { width:16px; height:16px; }
+
+/* ─── PAIN SECTION ─── */
+.pain-section { background: var(--bg2); }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+.pain-card {
+  background: var(--card);
+  border: 1px solid var(--red-br);
+  border-radius: 8px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.pain-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--red);
+}
+.pain-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.pain-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--red);
+  margin-bottom: 8px; line-height: 1.4;
+}
+.pain-text { font-size: 13px; color: var(--muted2); line-height: 1.6; }
+
+/* ─── WHY CC ─── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+.why-card {
+  background: var(--card);
+  border: 1px solid var(--green-br);
+  border-radius: 8px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s;
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--green);
+}
+.why-card:hover { transform: translateY(-4px); }
+.why-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.why-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--green);
+  margin-bottom: 8px; line-height: 1.4;
+}
+.why-text { font-size: 13px; color: var(--muted2); line-height: 1.6; }
+
+/* ─── STATS ─── */
+.stats-section { background: var(--bg2); }
+.stats-big-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 48px;
+}
+@media(max-width:640px){ .stats-big-grid { grid-template-columns: 1fr; } }
+
+.big-stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 36px 32px;
+}
+.bsc-label {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.bsc-number {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 64px; font-weight: 900;
+  line-height: 1; letter-spacing: -2px;
+  color: var(--green);
+}
+.bsc-sub { font-size: 13px; color: var(--muted2); margin-top: 8px; }
+
+.progress-wrap { margin-top: 20px; }
+.progress-track {
+  height: 4px; background: rgba(255,255,255,0.07);
+  border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #86efac);
+  border-radius: 2px;
+  animation: grow 2s ease 0.3s both;
+  transform-origin: left;
+}
+@keyframes grow { from { width: 0 !important; } }
+
+.week-signals {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-top: 24px;
+}
+.ws-row {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px;
+}
+.ws-label { color: var(--muted2); min-width: 110px; font-family: monospace; font-size: 12px; }
+.ws-bar-wrap { flex: 1; height: 6px; background: rgba(0,0,0,0.08); border-radius: 3px; overflow: hidden; }
+.ws-bar { height: 100%; border-radius: 3px; }
+.ws-bar.profit { background: var(--green); }
+.ws-bar.loss   { background: var(--red); }
+.ws-val { min-width: 60px; text-align: right; font-family: monospace; font-size: 12px; }
+.ws-val.p { color: var(--green); }
+.ws-val.l { color: var(--red); }
+
+/* ─── RESULTS / SIGNALS ─── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+.result-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.rc-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.rc-pair {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px; font-weight: 900; letter-spacing: 0.5px;
+}
+.rc-dir {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  padding: 4px 10px; border-radius: 3px;
+}
+.rc-dir.buy  { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-br); }
+.rc-dir.sell { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-br); }
+.rc-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+.rc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px;
+  padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.rc-row:last-child { border: none; }
+.rc-key { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+.rc-val { font-weight: 600; font-size: 14px; }
+.rc-val.e  { color: var(--gold2); }
+.rc-val.sl { color: var(--red); }
+.rc-val.tp { color: var(--green); }
+.rc-footer {
+  margin: 0 20px 16px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.rc-footer.win  { background: var(--green-bg); border: 1px solid var(--green-br); }
+.rc-footer.loss { background: var(--red-bg);   border: 1px solid var(--red-br); }
+.rc-footer-label { font-size: 10px; color: var(--muted2); letter-spacing: 2px; text-transform: uppercase; }
+.rc-footer-val {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px; font-weight: 900;
+}
+.rc-footer.win  .rc-footer-val { color: var(--green); }
+.rc-footer.loss .rc-footer-val { color: var(--red); }
+
+/* ─── REVIEWS ─── */
+.reviews-section { background: var(--bg2); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+.review-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  transition: border-color .25s;
+}
+.review-card:hover { border-color: rgba(0,0,0,0.25); }
+.review-stars { color: var(--gold2); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+.review-text {
+  font-size: 14px; color: var(--white);
+  line-height: 1.7; margin-bottom: 16px;
+  font-style: italic;
+}
+.review-author {
+  display: flex; align-items: center; gap: 10px;
+}
+.review-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--neutral);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--green);
+}
+.review-name { font-weight: 600; font-size: 13px; }
+.review-meta { font-size: 11px; color: var(--muted2); margin-top: 2px; }
+
+/* ZOOM PROOF */
+.zoom-proof {
+  margin-top: 48px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex; align-items: flex-start; gap: 32px;
+  flex-wrap: wrap;
+}
+.zoom-text { flex: 1; min-width: 240px; }
+.zoom-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px; font-weight: 900;
+  margin-bottom: 12px;
+}
+.zoom-sub { font-size: 14px; color: var(--muted2); line-height: 1.7; }
+.zoom-quotes {
+  flex: 1; min-width: 240px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.zoom-quote {
+  background: var(--bg2);
+  border-left: 3px solid var(--green);
+  padding: 12px 16px;
+  border-radius: 0 4px 4px 0;
+  font-size: 13px; color: var(--muted2);
+  line-height: 1.6; font-style: italic;
+}
+.zoom-quote strong { color: var(--white); font-style: normal; }
+
+/* ─── PRICING ─── */
+.pricing-section { }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 12px;
+  margin-top: 48px;
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px 28px;
+  position: relative;
+  transition: transform .25s;
+}
+.price-card:hover { transform: translateY(-4px); }
+.price-card.featured {
+  border-color: rgba(212,160,23,0.4);
+  background: linear-gradient(160deg, #fffbea 0%, #F9F9F9 100%);
+}
+.price-badge {
+  position: absolute; top: -1px; right: 24px;
+  background: var(--gold2); color: #000;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 9px; font-weight: 700;
+  padding: 4px 12px; letter-spacing: 2px;
+  border-radius: 0 0 4px 4px;
+}
+.price-name {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 3px; text-transform: uppercase;
+  font-family: 'Unbounded', sans-serif; font-weight: 700;
+  margin-bottom: 16px;
+}
+.price-amount {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 52px; font-weight: 900;
+  line-height: 1; letter-spacing: -2px; color: var(--white);
+}
+.price-currency {
+  font-size: 22px; color: var(--gold2);
+  vertical-align: super; font-size: 20px;
+}
+.price-period {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 1px; margin-top: 4px; margin-bottom: 24px;
+}
+.price-save {
+  font-size: 12px; color: var(--green);
+  margin-bottom: 8px; font-weight: 600;
+}
+.price-features {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 10px; margin-bottom: 28px;
+}
+.price-features li {
+  font-size: 14px; color: var(--muted2);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.5;
+}
+.price-features li::before {
+  content: '✓'; color: var(--green);
+  font-weight: 700; font-size: 13px;
+  flex-shrink: 0; margin-top: 1px;
+}
+.price-features li.dim::before { content: '–'; color: var(--muted); }
+.price-features li.dim { opacity: .45; }
+
+.price-btn {
+  display: block; text-align: center; text-decoration: none;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 14px; border-radius: 6px;
+  transition: opacity .2s, transform .2s;
+}
+.price-btn:hover { opacity: .85; transform: translateY(-1px); }
+.price-btn.green { background: var(--green); color: #000; }
+.price-btn.outlined { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--white); }
+
+/* URGENCY */
+.urgency-bar {
+  margin-top: 28px;
+  background: rgba(239,68,68,0.05);
+  border: 1px solid var(--red-br);
+  border-radius: 6px;
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.urgency-icon { font-size: 22px; flex-shrink: 0; }
+.urgency-text { font-size: 13px; color: var(--muted2); line-height: 1.5; }
+.urgency-text strong { color: var(--red); }
+
+/* ─── FAQ ─── */
+.faq-section { background: var(--bg2); }
+.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 4px; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-item.open { border-color: rgba(0,0,0,0.2); }
+.faq-q {
+  padding: 18px 22px;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+  font-weight: 600; font-size: 15px;
+  user-select: none;
+}
+.faq-q .faq-plus {
+  font-size: 20px; color: var(--muted); transition: transform .3s;
+  flex-shrink: 0; margin-left: 16px; line-height: 1;
+}
+.faq-item.open .faq-plus { transform: rotate(45deg); color: var(--green); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .3s;
+  font-size: 14px; color: var(--muted2); line-height: 1.7;
+  padding: 0 22px;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: linear-gradient(160deg, #f0fff4 0%, #FFFFFF 60%);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.cta-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(30px, 6vw, 72px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+.cta-title span { color: var(--green); }
+.cta-sub { font-size: 16px; color: var(--muted2); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green); color: #000;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 18px 48px; border-radius: 6px;
+  text-decoration: none; letter-spacing: 0.5px;
+  transition: transform .2s, box-shadow .2s;
+}
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(34,197,94,0.3); }
+
+.trust-line {
+  margin-top: 28px;
+  display: flex; align-items: center; justify-content: center; gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  font-size: 12px; color: var(--muted);
+  display: flex; align-items: center; gap: 6px;
+}
+.trust-item::before { content:'✓'; color: var(--green); font-size: 11px; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #F5F5F5;
+  border-top: 1px solid var(--border);
+  padding: 36px 0;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px; font-weight: 900; color: var(--white);
+  margin-bottom: 10px;
+}
+.footer-logo span { color: var(--gold2); }
+.footer-links {
+  font-size: 12px; color: var(--muted);
+  margin-bottom: 16px; line-height: 1.8;
+}
+.footer-disc {
+  font-size: 10px; color: #666666; max-width: 580px;
+  margin: 0 auto; line-height: 1.7;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width: 640px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .nav-logo { font-size: 12px; }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">CAPITAL <span>COMMUNITY</span></div>
+    <a href="https://wa.me/77774812128" target="_blank" class="nav-cta">Қосылу →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-live">
+      <div class="hero-live-dot"></div>
+      СИГНАЛДАР БЕЛСЕНДІ
+    </div>
+
+    <h1 class="hero-title">
+      Capital<br>
+      <span class="accent">Community</span>
+    </h1>
+
+    <p class="hero-sub">
+      Тәжірибелі трейдерлердің <strong>XAUUSD бойынша нақты сигналдарын</strong> алыңыз.<br>
+      Кіші стоп — үлкен тейк. SMC/ICT методология.
+    </p>
+
+    <div class="hero-stats reveal">
+      <div class="hstat">
+        <div class="hstat-num">85<span style="font-size:20px">%</span></div>
+        <div class="hstat-label">Win Rate</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num gold">10:1</div>
+        <div class="hstat-label">Макс. RR</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">6330</div>
+        <div class="hstat-label">Апталық пипс</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">500+</div>
+        <div class="hstat-label">Қатысушы</div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/77774812128" target="_blank" class="hero-btn reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.843L0 24l6.336-1.495A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.652-.492-5.184-1.355l-.371-.217-3.864.912.978-3.768-.24-.386A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp арқылы қосылу
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container">
+    <div class="section-eyebrow">Мәселе</div>
+    <h2 class="section-title">Басқа сигналдар<br><span style="color:var(--red)">неге жұмыс істемейді?</span></h2>
+    <p class="section-sub">Сигнал чаттарға ақша беріп, нәтиже шығармаған болса — себебі осында.</p>
+
+    <div class="pain-grid reveal">
+      <div class="pain-card">
+        <span class="pain-icon">📉</span>
+        <div class="pain-title">Үлкен стоп — кіші тейк</div>
+        <div class="pain-text">Тәуекел 100 пипс, пайда 30 пипс. Бір стоп — үш тейкті жойып кетеді. Математика сіздің қарсыңызда жұмыс істейді.</div>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🔕</span>
+        <div class="pain-title">Кері байланыс жоқ</div>
+        <div class="pain-text">Сигнал берді — жоғалды. Неге кірдік, не болды — түсіндіретін ешкім жоқ. Сіз жалғыз қаласыз.</div>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🎲</span>
+        <div class="pain-title">Жауапкершілік жоқ</div>
+        <div class="pain-text">Стоп болды — "нарық солай". Жауап беретін ешкім жоқ. Ақшаны алды, нәтиже жоқ.</div>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">📚</span>
+        <div class="pain-title">Үйретпейді</div>
+        <div class="pain-text">Сигналды ғана берді. Неліктен, қалай — түсіндіруді ойламайды. Өз бетіңізге трейдер болып кете алмайсыз.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY CC -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Шешім</div>
+    <h2 class="section-title">Неге <span style="color:var(--green)">Capital Community?</span></h2>
+    <p class="section-sub">Біз кіші стоппен үлкен тейк алу стратегиясын ғана емес, толық экожүйені ұсынамыз.</p>
+
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <span class="why-icon">🎯</span>
+        <div class="why-title">Кіші стоп — үлкен тейк</div>
+        <div class="why-text">RR 3:1, 5:1, тіпті 10:1. Стоп тек 3 рет болды — жалпы 6330+ пипс ұтыс. Математика сіздің жаққыңызда.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🎬</span>
+        <div class="why-title">Видеосабақтар</div>
+        <div class="why-text">SMC/ICT методологиясы бойынша дайын сабақтар. Нарықты өзіңіз оқи білуге үйренесіз.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📡</span>
+        <div class="why-title">Лайф трейдтер</div>
+        <div class="why-text">Руслан нарықта нақты сауда жасап, барлығын тікелей эфирде көрсетеді. Нәтиже алдыңызда.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💬</span>
+        <div class="why-title">24/7 чат + Zoom созвон</div>
+        <div class="why-text">Кез келген сұраққа жауап аласыз. Апта сайынғы Zoom — сауда жасап, нарықты талдаймыз.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="section-eyebrow">Статистика</div>
+    <h2 class="section-title">Нақты <span style="color:var(--green)">нәтижелер</span></h2>
+    <p class="section-sub">Барлық нәтижелер ашық жарияланады. Ештеңені жасырмаймыз.</p>
+
+    <div class="stats-big-grid reveal">
+      <div class="big-stat-card">
+        <div class="bsc-label">WIN RATE</div>
+        <div class="bsc-number">85<span style="font-size:32px">%</span></div>
+        <div class="bsc-sub">Соңғы 30 күн ішінде</div>
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div class="progress-fill" style="width:85%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="big-stat-card">
+        <div class="bsc-label">АПТАНЫҢ СИГНАЛДАРЫ</div>
+        <div class="week-signals">
+          <div class="ws-row">
+            <span class="ws-label">4527-4533 buy</span>
+            <div class="ws-bar-wrap"><div class="ws-bar profit" style="width:88%"></div></div>
+            <span class="ws-val p">+550 p</span>
+          </div>
+          <div class="ws-row">
+            <span class="ws-label">4558-4561 sell</span>
+            <div class="ws-bar-wrap"><div class="ws-bar profit" style="width:100%"></div></div>
+            <span class="ws-val p">+1050 p</span>
+          </div>
+          <div class="ws-row">
+            <span class="ws-label">4468-4472 buy</span>
+            <div class="ws-bar-wrap"><div class="ws-bar profit" style="width:100%"></div></div>
+            <span class="ws-val p">+1050 p</span>
+          </div>
+          <div class="ws-row">
+            <span class="ws-label">4561-4566 sell</span>
+            <div class="ws-bar-wrap"><div class="ws-bar profit" style="width:74%"></div></div>
+            <span class="ws-val p">+780 p</span>
+          </div>
+          <div class="ws-row">
+            <span class="ws-label">4531-4537 sell</span>
+            <div class="ws-bar-wrap"><div class="ws-bar profit" style="width:36%"></div></div>
+            <span class="ws-val p">+380 p</span>
+          </div>
+          <div class="ws-row">
+            <span class="ws-label">4522-4526 buy</span>
+            <div class="ws-bar-wrap"><div class="ws-bar loss" style="width:7%"></div></div>
+            <span class="ws-val l">–70 p</span>
+          </div>
+        </div>
+        <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12px;color:var(--muted)">Апта жиыны:</span>
+          <span style="font-family:'Unbounded',sans-serif; font-size:20px; font-weight:900; color:var(--green)">+6330 пипс</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;text-align:right;">Стоп тек 3 рет · –150 пипс</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SIGNAL EXAMPLES -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Сигналдар</div>
+    <h2 class="section-title">Нақты <span style="color:var(--gold2)">сигнал мысалдары</span></h2>
+
+    <div class="results-grid reveal">
+      <div class="result-card">
+        <div class="rc-header">
+          <div class="rc-pair">XAUUSD</div>
+          <div class="rc-dir buy">BUY</div>
+        </div>
+        <div class="rc-body">
+          <div class="rc-row"><span class="rc-key">ZONE</span><span class="rc-val e">4527 – 4533</span></div>
+          <div class="rc-row"><span class="rc-key">STOP</span><span class="rc-val sl">4520</span></div>
+          <div class="rc-row"><span class="rc-key">TARGET</span><span class="rc-val tp">4588</span></div>
+          <div class="rc-row"><span class="rc-key">RR</span><span class="rc-val" style="color:var(--white)">1 : 8.7</span></div>
+        </div>
+        <div class="rc-footer win">
+          <span class="rc-footer-label">НӘТИЖЕ</span>
+          <span class="rc-footer-val">TP ✓ +550 пипс</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="rc-header">
+          <div class="rc-pair">XAUUSD</div>
+          <div class="rc-dir sell">SELL</div>
+        </div>
+        <div class="rc-body">
+          <div class="rc-row"><span class="rc-key">ZONE</span><span class="rc-val e">4558 – 4561</span></div>
+          <div class="rc-row"><span class="rc-key">STOP</span><span class="rc-val sl">4572</span></div>
+          <div class="rc-row"><span class="rc-key">TARGET</span><span class="rc-val tp">4455</span></div>
+          <div class="rc-row"><span class="rc-key">RR</span><span class="rc-val" style="color:var(--white)">1 : 9.3</span></div>
+        </div>
+        <div class="rc-footer win">
+          <span class="rc-footer-label">НӘТИЖЕ</span>
+          <span class="rc-footer-val">TP ✓ +1050 пипс</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="rc-header">
+          <div class="rc-pair">XAUUSD</div>
+          <div class="rc-dir buy">BUY</div>
+        </div>
+        <div class="rc-body">
+          <div class="rc-row"><span class="rc-key">ZONE</span><span class="rc-val e">4511 – 4514</span></div>
+          <div class="rc-row"><span class="rc-key">STOP</span><span class="rc-val sl">4507</span></div>
+          <div class="rc-row"><span class="rc-key">TARGET</span><span class="rc-val tp">4580</span></div>
+          <div class="rc-row"><span class="rc-key">RR</span><span class="rc-val" style="color:var(--white)">1 : 10</span></div>
+        </div>
+        <div class="rc-footer win">
+          <span class="rc-footer-label">НӘТИЖЕ</span>
+          <span class="rc-footer-val">TP ✓ +220 пипс</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-eyebrow">Клиент пікірлері</div>
+    <h2 class="section-title">Нақты <span style="color:var(--green)">нәтиже көрген</span> адамдар</h2>
+
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Тек сигнал чатпен 😍 Кеше аздап минус болып қалды, бүгін толтырдқ"</div>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div>
+            <div class="review-name">Аноним</div>
+            <div class="review-meta">Сигнал чат мүшесі</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Афумен примерна 200$ котердым бугын рахмет, благодарю. Негізы онаи стратегия екен, толык былгым келып отыр"</div>
+        <div class="review-author">
+          <div class="review-avatar">М</div>
+          <div>
+            <div class="review-name">Мария</div>
+            <div class="review-meta">Лайф трейд қатысушысы</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Рахмет сіздердің арқаларыңызда 👏 19/26 күнгі бір жұмалық нәтижат 242,000 теңге!"</div>
+        <div class="review-author">
+          <div class="review-avatar">Ш</div>
+          <div>
+            <div class="review-name">Шолпан А.</div>
+            <div class="review-meta">VIP мүше</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Руслан рахмет сигналдар просто 🔥🔥🔥 Оқуға лайықты трейдер, нақты стратегия"</div>
+        <div class="review-author">
+          <div class="review-avatar">Р</div>
+          <div>
+            <div class="review-name">Раушан Т.</div>
+            <div class="review-meta">Zoom созвон қатысушысы</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Қарызда, минуста жүрген бір қазаққа сауап жасадыңыздар деп ойлаймын... Рахмет үлкен!"</div>
+        <div class="review-author">
+          <div class="review-avatar">🌹</div>
+          <div>
+            <div class="review-name">Ақжол ханым</div>
+            <div class="review-meta">Қауымдастық мүшесі</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Рахмет бауырым 😍 Жаксылап уиренип алу керек 1-2$ стоп күшті екен. Рахмет жігіттер күшті болды"</div>
+        <div class="review-author">
+          <div class="review-avatar">Б</div>
+          <div>
+            <div class="review-name">Бауырым</div>
+            <div class="review-meta">Сигнал чат мүшесі</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZOOM PROOF -->
+    <div class="zoom-proof reveal">
+      <div class="zoom-text">
+        <div class="tag tag-green" style="margin-bottom:16px">● ZOOM ДӘЛЕЛ</div>
+        <div class="zoom-title">Апта сайынғы Zoom созвон</div>
+        <div class="zoom-sub">50+ адам тікелей қосылады. Нарықты талдаймыз, сауда жасаймыз, сұрақтарға жауап береміз. Бұл жай сигнал чат емес — бұл оқу орны.</div>
+      </div>
+      <div class="zoom-quotes">
+        <div class="zoom-quote"><strong>Максат С.:</strong> "Өте керемет"</div>
+        <div class="zoom-quote"><strong>Айман:</strong> "бэйи тунайт десе тунайт екенсіз 😎"</div>
+        <div class="zoom-quote"><strong>Гаухар:</strong> "Алла разы болсын 3 сағат бізге уақыт арнап түсіндіріп. Жақсы өтті"</div>
+        <div class="zoom-quote"><strong>Мухаббат М.:</strong> "Рахмет сізге потому что вы даёте нам уверенность в себе"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Тарифтер</div>
+    <h2 class="section-title">Өз жоспарыңызды <span style="color:var(--gold2)">таңдаңыз</span></h2>
+    <p class="section-sub">Барлық жоспарда нақты XAUUSD сигналдары, кіші стоп, үлкен тейк.</p>
+
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-name">Базалық</div>
+        <div class="price-amount"><span class="price-currency">₸</span>30 000</div>
+        <div class="price-period">/ 1 АЙ</div>
+        <ul class="price-features">
+          <li>XAUUSD сигналдары (күнделікті)</li>
+          <li>Зона, стоп, тейк — нақты</li>
+          <li>Аптаның нәтижелері</li>
+          <li>Видеосабақтар (SMC/ICT)</li>
+          <li>Апта сайынғы Zoom созвон</li>
+          <li>24/7 чат қолдауы</li>
+        </ul>
+        <a href="https://wa.me/77774812128?text=Базалық%20тарифке%20қосылғым%20келеді" target="_blank" class="price-btn outlined">Қосылу →</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">ХИТ</div>
+        <div class="price-name">Оптималды</div>
+        <div class="price-amount"><span class="price-currency">₸</span>50 000</div>
+        <div class="price-period">/ 2 АЙ</div>
+        <div class="price-save">✓ 10 000 ₸ үнемдейсіз</div>
+        <ul class="price-features">
+          <li>XAUUSD сигналдары (күнделікті)</li>
+          <li>Зона, стоп, тейк — нақты</li>
+          <li>Аптаның нәтижелері</li>
+          <li>Видеосабақтар (SMC/ICT)</li>
+          <li>Апта сайынғы Zoom созвон</li>
+          <li>24/7 чат қолдауы</li>
+        </ul>
+        <a href="https://wa.me/77774812128?text=Оптималды%20тарифке%20қосылғым%20келеді" target="_blank" class="price-btn green">Қосылу →</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">VIP</div>
+        <div class="price-amount"><span class="price-currency">₸</span>120 000</div>
+        <div class="price-period">/ 6 АЙ</div>
+        <div class="price-save">✓ 60 000 ₸ үнемдейсіз</div>
+        <ul class="price-features">
+          <li>XAUUSD сигналдары (күнделікті)</li>
+          <li>Зона, стоп, тейк — нақты</li>
+          <li>Аптаның нәтижелері</li>
+          <li>Видеосабақтар (SMC/ICT)</li>
+          <li>Апта сайынғы Zoom созвон</li>
+          <li>24/7 чат қолдауы</li>
+        </ul>
+        <a href="https://wa.me/77774812128?text=VIP%20тарифке%20қосылғым%20келеді" target="_blank" class="price-btn outlined">Қосылу →</a>
+      </div>
+    </div>
+
+    <div class="urgency-bar reveal">
+      <div class="urgency-icon">🔴</div>
+      <div class="urgency-text">
+        <strong>Назар аударыңыз:</strong> Сигнал чат <strong>жабық режимде</strong> жұмыс істейді. Орын шектелген — осы айдың соңына дейін қосылған адамдар ғана кіре алады. Келесі тіркеу — келесі айда.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Жиі қойылатын <span style="color:var(--white)">сұрақтар</span></h2>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Трейдинг тәжірибем жоқ, қосыла аламын ба? <span class="faq-plus">+</span></div>
+        <div class="faq-a">Иә, бастаушыларға арналған. Сигналда нақты зона, стоп, тейк беріледі. Видеосабақтар мен Zoom созвондар арқылы нарықты түсінуді үйренесіз.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Қандай брокерде трейдинг жасауға болады? <span class="faq-plus">+</span></div>
+        <div class="faq-a">Кез келген брокерде XAUUSD (алтын) бар болса жеткілікті. Exness, ICMarkets, XM — төмен спред, сенімді шарттар. Канал ішінде арнайы Брокер бөлімі бар.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Минималды депозит қанша болуы керек? <span class="faq-plus">+</span></div>
+        <div class="faq-a">$100–200-дан бастауға болады. Лот 0.01–0.02 пайдалансаңыз, тәуекел дұрыс деңгейде болады. Ең бастысы — риск-менеджмент сақтау.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Апта сайын қанша сигнал болады? <span class="faq-plus">+</span></div>
+        <div class="faq-a">Орта есеппен 5–10 зона беріледі. Соңғы аптада: 19 сигналдан 18-і профит болды — барлығы 6330+ пипс. Стоп тек 3 рет, жалпы –150 пипс.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Ақша төлегеннен кейін қалай кіремін? <span class="faq-plus">+</span></div>
+        <div class="faq-a">WhatsApp арқылы хабарласыңыз. Төлемді растағаннан кейін 15 минут ішінде жабық канал сілтемесін аласыз.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-eyebrow" style="justify-content:center">Қосылу</div>
+    <h2 class="cta-title">Бүгіннен бастап<br><span>табыс табыңыз</span></h2>
+    <p class="cta-sub">500+ трейдер бізбен бірге. Келесі сигнал — бүгін. Орындар шектелген.</p>
+
+    <a href="https://wa.me/77774812128?text=Capital%20Community-ге%20қосылғым%20келеді" target="_blank" class="cta-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.843L0 24l6.336-1.495A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.652-.492-5.184-1.355l-.371-.217-3.864.912.978-3.768-.24-.386A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp арқылы қосылу
+    </a>
+
+    <div class="trust-line">
+      <div class="trust-item">Нақты нәтижелер</div>
+      <div class="trust-item">Кіші стоп — үлкен тейк</div>
+      <div class="trust-item">24/7 қолдау</div>
+      <div class="trust-item">Апта сайынғы Zoom</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">CAPITAL <span>COMMUNITY</span></div>
+    <div class="footer-links">
+      XAUUSD · SMC / ICT · WhatsApp: +7 777 481 2128
+    </div>
+    <div class="footer-disc">
+      Ескерту: Қаржы құралдарымен сауда жасау капитал жоғалту тәуекелімен байланысты. Өткен нәтижелер болашақ нәтижелерге кепілдік бермейді. Ұсынылған ақпарат тек білім беру мақсатында берілген және қаржылық кеңес болып табылмайды.
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
