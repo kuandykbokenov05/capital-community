@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Capital Community — 5 күн тегін WhatsApp-чат</title>
+<meta name="description" content="5 күн бойы тегін: XAUUSD сигналдары, 2 күн лайв-трейд және SMC/ICT оқыту. WhatsApp-чатқа қосылыңыз.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080906;
+  --bg-soft:#10120B;
+  --card:#14160E;
+  --line:rgba(214,178,68,.22);
+  --line-soft:rgba(214,178,68,.12);
+  --gold:#E8C45A;
+  --gold-bright:#F7E08A;
+  --gold-deep:#C79B30;
+  --green:#25D366;
+  --text:#FBF9F0;
+  --muted:#C7C4B4;
+  --red:#E0705F;
+  --radius:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:#080906;color-scheme:dark}
+body{
+  background:#080906;
+  background:var(--bg);
+  min-height:100vh;
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:520px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+@media(min-width:900px){.wrap{max-width:660px}}
+
+/* solid dark backdrop — always painted, even if html/body bg is overridden */
+.bg-base{
+  position:fixed;inset:-2px;z-index:0;pointer-events:none;
+  background:#080906;
+}
+/* ambient background */
+.bg-glow{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(620px 420px at 85% -5%, rgba(214,178,68,.13), transparent 65%),
+    radial-gradient(520px 380px at -10% 28%, rgba(37,211,102,.05), transparent 60%),
+    radial-gradient(700px 500px at 50% 115%, rgba(214,178,68,.08), transparent 65%);
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(214,178,68,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214,178,68,.035) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 90% 55% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 0%, #000 30%, transparent 75%);
+}
+
+/* ---------- header ---------- */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0 16px;
+}
+.logo{
+  font-family:'Unbounded',sans-serif;font-weight:900;font-size:14px;
+  letter-spacing:.05em;color:var(--text);
+}
+.logo span{
+  background:linear-gradient(100deg,var(--gold),var(--gold-bright));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.live-dot{
+  display:flex;align-items:center;gap:7px;
+  font-size:11.5px;font-weight:700;letter-spacing:.04em;color:#CFCBB8;
+  border:1px solid var(--line);border-radius:99px;padding:7px 13px;
+  background:rgba(214,178,68,.05);
+}
+.live-dot::before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 10px var(--green);
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---------- gold ticker strip ---------- */
+.ticker{
+  position:relative;z-index:2;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+  background:rgba(214,178,68,.04);
+  overflow:hidden;white-space:nowrap;
+  padding:9px 0;margin-top:4px;
+}
+.ticker-inner{
+  display:inline-block;
+  animation:scroll 22s linear infinite;
+  font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-bright);
+}
+.ticker-inner i{font-style:normal;color:#5E5B49;margin:0 14px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- hero ---------- */
+.hero{padding:36px 0 26px;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-bright);
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(214,178,68,.14),rgba(214,178,68,.03));
+  border-radius:99px;padding:8px 16px;margin-bottom:20px;
+  box-shadow:0 0 24px rgba(214,178,68,.12);
+}
+h1{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:clamp(29px,7.6vw,46px);
+  line-height:1.12;letter-spacing:-.012em;
+  margin-bottom:18px;
+}
+h1 .gold{
+  background:linear-gradient(100deg,var(--gold) 0%,var(--gold-bright) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);font-size:16.5px;margin-bottom:26px;max-width:46ch}
+.hero p b{color:var(--text);font-weight:600}
+
+/* hero stat chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.chip{
+  font-size:12.5px;font-weight:600;color:#DDD9C6;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  border-radius:10px;padding:8px 12px;
+  display:flex;align-items:center;gap:7px;
+}
+.chip b{color:var(--gold-bright);font-weight:800}
+
+/* ---------- CTA ---------- */
+.cta{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;
+  background:linear-gradient(180deg,#34E97A,var(--green) 50%,#1CAD53);
+  color:#04120A;
+  font-weight:800;font-size:17px;letter-spacing:.01em;
+  border:none;border-radius:16px;
+  padding:19px 24px;cursor:pointer;text-decoration:none;
+  box-shadow:0 10px 34px rgba(37,211,102,.35), inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .15s ease;
+  overflow:hidden;
+}
+.cta::after{
+  content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-20deg);
+  animation:shine 3.4s ease-in-out infinite;
+}
+@keyframes shine{0%,55%{left:-80%}80%,100%{left:130%}}
+.cta:active{transform:scale(.97)}
+.cta svg{flex-shrink:0}
+.cta-sub{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:13px;font-size:13px;color:var(--muted);
+}
+.cta-sub b{color:var(--gold-bright);font-weight:700}
+
+/* ---------- signal ticket ---------- */
+.ticket-zone{padding:16px 0 6px}
+.ticket{
+  position:relative;
+  background:linear-gradient(160deg,#1B1D12,#0D0F07 70%);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 20px 18px;
+  box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(214,178,68,.18);
+  overflow:hidden;
+}
+.ticket::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(220px 160px at 100% 0%, rgba(214,178,68,.14), transparent 70%),
+    radial-gradient(180px 140px at 0% 100%, rgba(37,211,102,.07), transparent 70%);
+  pointer-events:none;
+}
+.ticket::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:.7;
+}
+.t-tag{
+  position:absolute;top:16px;right:16px;
+  font-size:10px;font-weight:800;letter-spacing:.14em;
+  color:var(--gold-bright);
+  border:1px solid var(--line);border-radius:6px;
+  padding:4px 8px;background:rgba(0,0,0,.3);
+}
+.t-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative}
+.pair-ico{
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(150deg,var(--gold-bright),var(--gold-deep));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Unbounded';font-weight:900;font-size:15px;color:#1A1505;
+  box-shadow:0 4px 16px rgba(214,178,68,.35);
+}
+.pair{font-family:'Unbounded',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em}
+.pair small{display:block;font-family:'Inter';font-weight:600;font-size:10.5px;color:var(--muted);letter-spacing:.1em;margin-top:3px}
+.side{
+  margin-left:auto;margin-right:54px;
+  font-size:12px;font-weight:800;letter-spacing:.1em;
+  color:#06160C;background:linear-gradient(180deg,#3BE57E,var(--green));
+  border-radius:8px;padding:6px 13px;
+  box-shadow:0 3px 12px rgba(37,211,102,.35);
+}
+.t-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:15px;position:relative}
+.t-cell{
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:13px;padding:11px 11px 10px;
+}
+.t-cell em{display:block;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.t-cell strong{font-size:15.5px;font-weight:800;font-variant-numeric:tabular-nums}
+.t-cell.tp{border-color:rgba(214,178,68,.3);background:rgba(214,178,68,.06)}
+.t-cell.tp strong{color:var(--gold-bright)}
+.t-cell.sl strong{color:var(--red)}
+.t-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);position:relative}
+.t-foot b{color:var(--text);font-weight:700}
+.ticket-caption{text-align:center;font-size:12.5px;color:#8E8C7D;margin-top:13px}
+
+/* ---------- sections ---------- */
+section{padding:42px 0 6px;position:relative}
+.sec-kicker{
+  font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-bright);margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-kicker::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
+.sec-title{
+  font-family:'Unbounded',sans-serif;font-weight:700;
+  font-size:clamp(21px,5.6vw,27px);line-height:1.24;margin-bottom:8px;
+}
+.sec-lead{color:var(--muted);font-size:15px;margin-bottom:24px}
+
+/* what you get */
+.gets{display:grid;grid-template-columns:1fr;gap:12px}
+.get{
+  position:relative;
+  display:flex;gap:15px;align-items:flex-start;
+  background:linear-gradient(165deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:17px 16px;
+  transition:border-color .25s ease, transform .25s ease;
+  overflow:hidden;
+}
+.get::before{
+  content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));
+}
+.get:active{transform:scale(.99)}
+.get .ico{
+  flex-shrink:0;width:44px;height:44px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,rgba(214,178,68,.2),rgba(214,178,68,.05));
+  border:1px solid var(--line);
+  font-size:19px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.get h3{font-size:15.5px;font-weight:700;margin-bottom:4px}
+.get h3 .hl{
+  font-size:10.5px;font-weight:800;letter-spacing:.08em;color:#06160C;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+  border-radius:6px;padding:2px 7px;margin-left:7px;vertical-align:2px;
+}
+.get p{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- 5-day plan ---------- */
+.week{display:flex;flex-direction:column;gap:10px}
+.day{
+  position:relative;
+  display:flex;align-items:center;gap:15px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:15px;padding:14px 16px;
+  overflow:hidden;
+}
+.day-num{
+  flex-shrink:0;width:46px;height:46px;border-radius:13px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:1px solid var(--line);
+  background:rgba(214,178,68,.06);
+}
+.day-num b{font-family:'Unbounded';font-weight:900;font-size:16px;color:var(--gold-bright);line-height:1}
+.day-num span{font-size:8.5px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin-top:3px}
+.day h3{font-size:14.5px;font-weight:700;margin-bottom:1px}
+.day p{font-size:12.5px;color:var(--muted)}
+.day.live{
+  border-color:rgba(224,90,75,.35);
+  background:linear-gradient(165deg,rgba(224,90,75,.09),var(--card) 60%);
+}
+.day.live .day-num{border-color:rgba(224,90,75,.45);background:rgba(224,90,75,.1)}
+.day.live .day-num b{color:#FF8A77}
+.live-badge{
+  margin-left:auto;flex-shrink:0;
+  display:flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:800;letter-spacing:.12em;
+  color:#FF8A77;border:1px solid rgba(224,90,75,.4);
+  border-radius:99px;padding:5px 10px;background:rgba(224,90,75,.08);
+}
+.live-badge::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:#FF6A55;box-shadow:0 0 8px #FF6A55;
+  animation:pulse 1.4s infinite;
+}
+
+/* steps */
+.steps{display:flex;flex-direction:column;margin-top:4px}
+.step{display:flex;gap:16px;padding:15px 0;position:relative}
+.step:not(:last-child)::before{
+  content:"";position:absolute;left:18px;top:54px;bottom:-4px;width:2px;
+  background:linear-gradient(180deg,var(--gold),transparent);opacity:.4;
+}
+.s-num{
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Unbounded';font-weight:700;font-size:14px;color:var(--gold-bright);
+  border:1px solid var(--gold);background:rgba(214,178,68,.08);
+  box-shadow:0 0 18px rgba(214,178,68,.15);
+}
+.step h3{font-size:15.5px;font-weight:700;margin-bottom:3px;padding-top:6px}
+.step p{font-size:13.5px;color:var(--muted)}
+
+/* ---------- final CTA ---------- */
+.final{
+  margin:44px 0 26px;
+  position:relative;
+  background:linear-gradient(170deg,#1A1C10,#0B0D06 75%);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:34px 22px 28px;
+  text-align:center;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(214,178,68,.2);
+}
+.final::before{
+  content:"";position:absolute;inset:auto -30% -130px -30%;height:240px;
+  background:radial-gradient(ellipse,rgba(214,178,68,.2),transparent 70%);
+}
+.final::after{
+  content:"";position:absolute;top:0;left:15%;right:15%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);
+}
+.final .f-eyebrow{
+  font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-bright);margin-bottom:12px;
+}
+.final h2{
+  font-family:'Unbounded';font-weight:900;
+  font-size:clamp(22px,6vw,30px);line-height:1.18;margin-bottom:12px;
+}
+.final h2 .gold{
+  background:linear-gradient(100deg,var(--gold-bright),var(--gold-bright));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.final p{color:var(--muted);font-size:14.5px;margin-bottom:24px;position:relative}
+.final .cta{position:relative;z-index:1}
+
+/* disclaimer + footer */
+.discl{
+  font-size:11.5px;color:#8A887A;line-height:1.55;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:24px 0 14px;
+}
+footer{padding:0 0 116px;text-align:center;font-size:12px;color:#6E6D61}
+
+/* sticky bar */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(8,9,6,.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  transform:translateY(110%);
+  transition:transform .35s ease;
+}
+.sticky.show{transform:translateY(0)}
+.sticky .inner{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.sticky .txt{flex:1;min-width:0}
+.sticky .txt b{display:block;font-size:13.5px;font-weight:800}
+.sticky .txt span{font-size:11.5px;color:var(--muted)}
+.sticky .cta{width:auto;padding:13px 22px;font-size:15px;border-radius:13px;box-shadow:0 4px 20px rgba(37,211,102,.32)}
+.sticky .cta::after{display:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .live-dot::before,.live-badge::before{animation:none}
+  .cta::after{animation:none;display:none}
+  .ticker-inner{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-base"></div>
+<div class="bg-glow"></div>
+<div class="bg-grid"></div>
+
+<div class="wrap">
+  <header>
+    <div class="logo">CAPITAL <span>COMMUNITY</span></div>
+    <div class="live-dot">Live трейдинг</div>
+  </header>
+</div>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    XAUUSD <i>◆</i> SMC / ICT <i>◆</i> Live трейд <i>◆</i> Тегін сигналдар <i>◆</i> 5 күн <i>◆</i>
+    XAUUSD <i>◆</i> SMC / ICT <i>◆</i> Live трейд <i>◆</i> Тегін сигналдар <i>◆</i> 5 күн <i>◆</i>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:32px">
+    <span class="eyebrow">✦ 5 күн · Тегін · WhatsApp</span>
+    <h1>5 күн бойы <span class="gold">тегін сигналдар</span> мен лайв-трейд</h1>
+    <p>Тегін WhatsApp-чатқа қосылыңыз: XAUUSD сигналдары, <b>2 күн тікелей эфирдегі трейд</b> және <b>SMC/ICT оқытуы</b>. Карта байлау жоқ, міндеттеме жоқ.</p>
+
+    <div class="chips">
+      <div class="chip">📡 <b>Күн сайын</b> сигналдар</div>
+      <div class="chip">🔴 <b>2 күн</b> лайв-трейд</div>
+      <div class="chip">🎓 SMC/ICT <b>сабақтар</b></div>
+    </div>
+
+    <a class="cta js-wa" href="#">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.35A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.06.8.82-2.98-.2-.31A8.2 8.2 0 1 1 12 20.2Zm4.5-6.13c-.25-.12-1.47-.72-1.69-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.12.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29Z"/></svg>
+      WhatsApp-чатқа қосылу
+    </a>
+    <div class="cta-sub">Орын саны шектеулі — <b>топ толған соң қабылдау жабылады</b></div>
+  </section>
+
+  <!-- SIGNAL TICKET -->
+  <div class="ticket-zone rv">
+    <div class="ticket">
+      <span class="t-tag">SIGNAL</span>
+      <div class="t-head">
+        <div class="pair-ico">Au</div>
+        <div class="pair">XAUUSD <small>GOLD / SPOT</small></div>
+        <div class="side">BUY</div>
+      </div>
+      <div class="t-grid">
+        <div class="t-cell"><em>Кіру</em><strong>4 150.0</strong></div>
+        <div class="t-cell sl"><em>Stop Loss</em><strong>4 140.0</strong></div>
+        <div class="t-cell tp"><em>Take Profit</em><strong>4 193.0</strong></div>
+      </div>
+      <div class="t-foot">
+        <span>Тәуекел: <b>қысқа SL</b></span>
+        <span>R:R <b>1 : 4.3</b></span>
+      </div>
+    </div>
+    <div class="ticket-caption">Чаттағы сигнал форматының мысалы — кіру нүктесі, SL және TP бірге беріледі</div>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <section class="rv">
+    <div class="sec-kicker">Бағдарлама</div>
+    <h2 class="sec-title">Осы 5 күнде не аласыз</h2>
+    <p class="sec-lead">Бәрі бір WhatsApp-чаттың ішінде, нақты уақытта.</p>
+    <div class="gets">
+      <div class="get">
+        <div class="ico">📡</div>
+        <div>
+          <h3>XAUUSD сигналдары</h3>
+          <p>Кіру нүктесі, Stop Loss және Take Profit көрсетілген дайын сигналдар — әр сетап түсіндірмесімен бірге.</p>
+        </div>
+      </div>
+      <div class="get">
+        <div class="ico">🔴</div>
+        <div>
+          <h3>Лайв-трейд сессиялары<span class="hl">2 КҮН</span></h3>
+          <p>Нарыққа тікелей эфирде кіреміз: сетапты қалай табатынымызды және позицияны қалай басқаратынымызды экраннан көресіз.</p>
+        </div>
+      </div>
+      <div class="get">
+        <div class="ico">🎓</div>
+        <div>
+          <h3>SMC/ICT оқыту сабақтары</h3>
+          <p>Smart Money Concepts негіздері: ликвидность, ордер-блоктар, нарық құрылымы — нөлден түсінікті тілмен.</p>
+        </div>
+      </div>
+      <div class="get">
+        <div class="ico">💬</div>
+        <div>
+          <h3>Сұрақ-жауап және талдау</h3>
+          <p>Өз трейдтеріңізді чатқа тастайсыз — бірге талдаймыз, қателеріңізді көрсетеміз.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-DAY PLAN -->
+  <section class="rv">
+    <div class="sec-kicker">Күнтізбе</div>
+    <h2 class="sec-title">5 күннің жоспары</h2>
+    <p class="sec-lead">Әр күннің өз бағдарламасы бар:</p>
+    <div class="week">
+      <div class="day">
+        <div class="day-num"><b>1</b><span>КҮН</span></div>
+        <div><h3>Таныстыру + алғашқы сигналдар</h3><p>Чат ережелері, формат және күннің сетаптары</p></div>
+      </div>
+      <div class="day">
+        <div class="day-num"><b>2</b><span>КҮН</span></div>
+        <div><h3>SMC/ICT сабағы + сигналдар</h3><p>Ликвидность пен нарық құрылымының негіздері</p></div>
+      </div>
+      <div class="day live">
+        <div class="day-num"><b>3</b><span>КҮН</span></div>
+        <div><h3>Лайв-трейд сессиясы</h3><p>Нарыққа тікелей эфирде кіреміз</p></div>
+        <div class="live-badge">LIVE</div>
+      </div>
+      <div class="day live">
+        <div class="day-num"><b>4</b><span>КҮН</span></div>
+        <div><h3>Лайв-трейд сессиясы</h3><p>Позицияны басқару + эфирдегі талдау</p></div>
+        <div class="live-badge">LIVE</div>
+      </div>
+      <div class="day">
+        <div class="day-num"><b>5</b><span>КҮН</span></div>
+        <div><h3>Қорытынды эфир + сұрақ-жауап</h3><p>Апта нәтижелерін талдау және келесі қадамдар</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="rv">
+    <div class="sec-kicker">Қосылу</div>
+    <h2 class="sec-title">Қалай қосыламын?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="s-num">1</div>
+        <div><h3>Батырманы басыңыз</h3><p>Жасыл батырма сізді тікелей WhatsApp-қа апарады.</p></div>
+      </div>
+      <div class="step">
+        <div class="s-num">2</div>
+        <div><h3>Чатқа кіріңіз</h3><p>«Қосылу» дегенді басасыз — болды, сіз топтасыз. Ешқандай төлем, ешқандай карта.</p></div>
+      </div>
+      <div class="step">
+        <div class="s-num">3</div>
+        <div><h3>5 күн бізбен бірге</h3><p>Сигналдарды бақылап, эфирлерге қатысып, нарықты түсіне бастайсыз.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final rv">
+    <div class="f-eyebrow">✦ Тегін доступ ✦</div>
+    <h2>Орныңызды <span class="gold">қазір</span> алыңыз</h2>
+    <p>Чат сапасын сақтау үшін қатысушы санын шектейміз.<br>Топ толған кезде сілтеме жабылады.</p>
+    <a class="cta js-wa" href="#">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.35A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.06.8.82-2.98-.2-.31A8.2 8.2 0 1 1 12 20.2Zm4.5-6.13c-.25-.12-1.47-.72-1.69-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.12.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29Z"/></svg>
+      Тегін чатқа қосылу
+    </a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="discl">
+    ⚠️ Тәуекел туралы ескерту: трейдинг — жоғары тәуекелді қызмет. Өткен нәтижелер болашақ табысқа кепілдік бермейді. Чаттағы барлық материалдар тек оқу-ағарту мақсатында беріледі және жеке инвестициялық кеңес болып табылмайды. Тек жоғалтуға дайын қаражатпен сауда жасаңыз. Шешімді әрқашан өзіңіз қабылдайсыз.
+  </div>
+
+  <footer>© 2026 Capital Community · Алматы</footer>
+
+</div>
+
+<!-- STICKY CTA -->
+<div class="sticky" id="sticky">
+  <div class="inner">
+    <div class="txt">
+      <b>5 күн тегін доступ</b>
+      <span>Сигналдар · 2 күн Live · Оқыту</span>
+    </div>
+    <a class="cta js-wa" href="#">Қосылу</a>
+  </div>
+</div>
+
+<script>
+/* ============================================
+   ⬇️ WHATSAPP БАЙЛАНЫС
+   ============================================ */
+const WHATSAPP_LINK = "https://wa.me/77774812128?text=Чатқа%20қосылғым%20келеді";
+
+document.querySelectorAll('.js-wa').forEach(a => { a.href = WHATSAPP_LINK; });
+
+/* sticky bar after hero */
+const hero = document.querySelector('.hero');
+const sticky = document.getElementById('sticky');
+new IntersectionObserver(([e]) => {
+  sticky.classList.toggle('show', !e.isIntersecting);
+}, {threshold: 0}).observe(hero);
+
+/* scroll reveal */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+}, {threshold: .12});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
